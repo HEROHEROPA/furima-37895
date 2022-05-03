@@ -8,5 +8,8 @@ module.exports = {
       },
       stage: 3
     })
-  ]
+  ],
+  "engines" : {
+    "node": "v14.19.1" // ここに先ほど確認したバージョンを記述
+  }
 }
