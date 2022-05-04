@@ -35,9 +35,7 @@ Things you may want to cover:
 ｜first_name            | string   |  null: false             |
 ｜last_name_k           | string   |  null: false             |
 ｜first_name_k          | string   |  null: false             |   
-｜birth_date_yy         | integer  |  null: false             | 
-｜birth_date_mm         | integer  |  null: false             | 
-｜birth_date_dd         | integer  |  null: false             | 
+｜birth_date            | date     |  null: false             | 
 
 
 
@@ -89,7 +87,7 @@ Things you may want to cover:
 
 ｜Column                | Type          |  Options                          |
 ｜----------------------| ------------  |  -------------------------------- |
-｜postal_code           | integer       |  null: false                      |
+｜postal_code           | string        |  null: false                      |
 ｜t_shipping_region_id  | integer       |  null: false                      |
 ｜city                  | string        |  null: false                      |
 ｜house_number          | string        |  null: false                      |
