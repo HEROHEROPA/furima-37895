@@ -93,6 +93,7 @@ Things you may want to cover:
 ｜house_number          | string        |  null: false                      |
 ｜house_name            | string        |                                   |
 ｜phone_number          | integer       |  null: false                      |
+｜shipping              | integer       |  null: false , foreign_key: true  |
 
 ## Association
 - belongs_to :shipping
