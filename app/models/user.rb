@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  # has_many :items
+  has_many :items
   # has_many :shippings
 
   validates :nickname,:birth_date,   presence: true 
@@ -16,6 +16,5 @@ class User < ApplicationRecord
     # カタカナのみ許可する
     validates :first_name_k,:last_name_k, format: {with: /\A[ァ-ヶー]+\z/, message: "is invalid. Input full-width katakana characters."}
   end
-
 
 end
