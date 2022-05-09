@@ -15,6 +15,7 @@ class ItemsController < ApplicationController
      if user_signed_in?
       @item=Item.new(item_params)
         if @item.valid?
+           @item.save
       #  if (@item[:price]!=nil && @item[:price]>300 && @item[:price]<=9999999 ) && @item.save
         # 検知順序を変更すると正常に処理されない。。原因は不明
          redirect_to root_path
