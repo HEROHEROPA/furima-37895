@@ -81,9 +81,9 @@ RSpec.describe Item, type: :model do
     end
 
     it 'ユーザーが紐づいていないと投稿できない' do
-     @item.user_id=nil
-     @item.valid?
-      expect(@item.errors.full_messages).to include("User can't be blank")
+      @item.user=nil #①アソシエーションを組んでおり自動で付与されるpresenseを適用したい場合はカラムを指定するのではなく左記の様に記述する。直接外部キーカラムを指定すると下記の理由により期待する結果を得られない。そのためアソシエーションそのものをnillにする必要がある。
+     @item.valid? #①である理由 → アソシエーションを組んでいるモデルの場合は値が生成され時点では外部キーカラムに値が入っていなくても（＊データを紐づける予定があると言う事を前提に）trueを返す仕様になっているため。
+      expect(@item.errors.full_messages).to include("User must exist")
     end
    end 
   end
@@ -91,14 +91,4 @@ end
 
 
 
- # @item.image = fixture_file_upload('app/assets/images/item-sample.png')
-# 必要な情報を適切に入力して「出品する」ボタンを押すと、商品情報がデータベースに保存されること。
-# 商品画像を1枚つけることが必須であること。
-#  商品名が必須であること。
-#  商品の説明が必須であること。
-#  カテゴリーの情報が必須であること。
-#  商品の状態の情報が必須であること。
-#  配送料の負担の情報が必須であること。
-#  発送元の地域の情報が必須であること。
-#  価格の情報が必須であること。
-#  価格は半角数値のみ保存可能であること。
+ 
