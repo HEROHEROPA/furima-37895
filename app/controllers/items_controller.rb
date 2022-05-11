@@ -42,7 +42,6 @@ before_action :authenticate_user!, except: [:index, :show]
     if  @item.update(item_params)
        redirect_to item_path
     else
-       @item.valid?
        render  "items/edit"
     end      
   end
