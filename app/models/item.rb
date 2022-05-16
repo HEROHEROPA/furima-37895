@@ -12,5 +12,6 @@ class Item < ApplicationRecord
 
   belongs_to :user
 
+
   belongs_to :category, :item_state, :pay_for_shipping, :shipping_day, :shipping_region
 end
