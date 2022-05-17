@@ -1,10 +1,9 @@
 class OrdersController < ApplicationController
  
   before_action :authenticate_user!, only: [:index]
-
+  before_action :item_find 
 
   def index
-    @item = Item.find(params[:item_id])
     @shippings=Shipping.all
     @shipping = ""
     @shippings.each do |shipping|
@@ -22,9 +21,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    # binding.pry
     @order = Order.new(get_item)
-    @item = Item.find(params[:item_id])
    if @order.valid?
 
     Payjp.api_key =  ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
@@ -37,7 +34,6 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to  root_path
    else 
-    # @item = Item.find(params[:item_id])
     render :index
    end
   end
@@ -48,6 +44,9 @@ class OrdersController < ApplicationController
    params.require(:order).permit(:postal_code,:shipping_region_id, :city,:house_number, :house_name,:phone_number).merge(item_id: params[:item_id], user_id: current_user.id, token: params[:token])
  end                                                                                  #カード情報をトークン化した情報はorderホームオブジェクト意外のハッシュに保存されるためmergeで値を取得する                  
 
+ def item_find
+  @item = Item.find(params[:item_id])
+ end
  
 
 end

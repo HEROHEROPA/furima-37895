@@ -1,18 +1,5 @@
 window.addEventListener('load', function(){
   
-  // const cardNumber =  document.getElementById('card-number') 
-  //    cardNumber.addEventListener("keyup",()=>console.log(cardNumber.value))
-
-  // const cardExpMonth =  document.getElementById("card-exp-month") 
-  //    cardExpMonth.addEventListener("keyup",()=>console.log(cardExpMonth.value))
-
-  // const cardExpYear =  document.getElementById('card-exp-year')
-  //    cardExpYear.addEventListener("keyup",()=>console.log(cardExpYear.value))
-
-  // const cardCvc =  document.getElementById('card-cvc')
-  //    cardCvc.addEventListener("keyup",()=>console.log(cardCvc.value))
-  
-  // let cardInfo=[cardNumber,cardExpMonth,cardExpYear,cardCvc] 
   
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); // PAY.JPテスト公開鍵
 
@@ -20,8 +7,8 @@ window.addEventListener('load', function(){
      buy.addEventListener("click",(e)=>{
       e.preventDefault()
     
-      const formResult = document.getElementById("charge-form");
-      const formData = new FormData(formResult);
+      const formResult = document.getElementById("charge-form");//フォームの要素を全て取得している
+      const formData = new FormData(formResult);//フォームデータメソッド
 
 
     const card = {
@@ -34,14 +21,12 @@ window.addEventListener('load', function(){
    console.log(card)
     Payjp.createToken(card, (status, response) => {
       if (status == 200) {
-        // console.log(response)
         const token = response.id;
-        // console.log(token)
+        
 
         const renderDom = document.getElementById("charge-form");
         const tokenObj = `<input value=${token} name='token'type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        // debugger;
       }
 
       document.getElementById("card-number").removeAttribute("name");

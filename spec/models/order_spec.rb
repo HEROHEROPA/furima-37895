@@ -73,7 +73,25 @@ describe '商品購入機能' do
       @order.phone_number = Faker::Number.number(digits: 12)
       @order.valid?
       expect(@order.errors.full_messages).to include( "Phone number is too long (maximum is 11 characters)")
-   end
+      end
+
+      it 'item_idが無いと購入できない' do
+        @order.item_id = ""
+        @order.valid?
+        expect(@order.errors.full_messages).to include( "Item can't be blank")
+        end
+
+      it 'user_idが無いと購入できない' do
+        @order.user_id = ""
+        @order.valid?
+        expect(@order.errors.full_messages).to include( "User can't be blank")
+        end  
+
+      it 'tokenが無いと購入できない' do
+        @order.token = ""
+        @order.valid?
+        expect(@order.errors.full_messages).to include( "Token can't be blank")
+        end
 
     end
 end

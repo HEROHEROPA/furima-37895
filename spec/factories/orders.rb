@@ -6,7 +6,7 @@ FactoryBot.define do
     house_number               { Faker::Lorem.sentence }
     house_name                 { Faker::Lorem.sentence }
     phone_number               { Faker::Number.number(digits: 11) }
-    
+    token                      {"tok_abcdefghijk00000000000000000"}
     # association :shipping   orderはモデルでないためassociationは記述できない。
     # after(:build) do |item|
     #   item.image.attach(io: File.open('app/assets/images/item-sample.png'), filename: 'test_image.png')
