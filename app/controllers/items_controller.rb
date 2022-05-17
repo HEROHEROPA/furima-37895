@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.includes(:user).order('created_at DESC')
+    @shippings = Shipping.all
   end
 
   def new
@@ -29,10 +30,26 @@ class ItemsController < ApplicationController
   end
 
   def show
+  @shippings = Shipping.all
+   @shippings.each do |shipping|
+    if @item.id == shipping.item_id 
+    @shipping = shipping
+    break
+    end
+   end 
   end
 
   def edit
-    redirect_to root_path if current_user.id != @item.user_id
+     if current_user.id != @item.user_id
+      redirect_to root_path
+     end 
+    @shippings = Shipping.all
+    @shippings.each do |shipping| 
+       if @item.id == shipping.item_id && current_user.id == @item.user_id
+        redirect_to root_path 
+        break
+       end 
+    end 
   end
 
   def update
@@ -58,4 +75,7 @@ class ItemsController < ApplicationController
   def get_item
     @item = Item.find(params[:id])
   end
+  
+  
+
 end
