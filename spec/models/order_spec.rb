@@ -28,7 +28,7 @@ describe '商品購入機能' do
       end
 
       it '郵便番号に不備があると購入できない' do
-        @order.postal_code = 38-99876
+        @order.postal_code = '38-99876'
         @order.valid?
         expect(@order.errors.full_messages).to include( "Postal code is invalid")
      end
