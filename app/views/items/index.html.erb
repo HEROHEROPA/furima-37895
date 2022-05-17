@@ -132,13 +132,14 @@
         <%= link_to item_path(item)  do %>
         <div class='item-img-content'>
           <%= image_tag item.image , class: "item-img" if item.image.attached? %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-
-          <%# <%# <div class='sold-out'>
+  
+        <% @shippings.each do |shipping| %>
+          <% if item.id == shipping.item_id %>
+           <div class='sold-out'>
             <span>Sold Out!!</span>
-          </div>  %>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          </div> 
+          <% end %>
+         <% end %>
 
         </div>
         <div class='item-info'>
@@ -146,7 +147,7 @@
             <%= item.item_name %>
           </h3>
           <div class='item-price'>
-            <span><%= item.price %>円<br><%= PayForShipping.data()[(item.pay_for_shipping_id)-1][:item_state] %></span>
+             <span><%= item.price %>円<br><%= PayForShipping.data()[(item.pay_for_shipping_id)-1][:item_state] %></span> 
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>

@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   belongs_to :user
+  has_one :shipping
 
   belongs_to :category, :item_state, :pay_for_shipping, :shipping_day, :shipping_region
 end
