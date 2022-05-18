@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   validates :price, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters.' }
 
-  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 9_999_999 }
+  validates :price, numericality: { only_integer: true, greater_than: 299, less_than: 10_000_000 }
 
   has_one_attached :image
 

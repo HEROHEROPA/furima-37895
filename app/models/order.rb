@@ -3,9 +3,10 @@ class Order
   attr_accessor  :postal_code, :shipping_region_id, :city, :house_number, :house_name,:phone_number,:shipping_id, :item_id, :user_id,:token
 
   validates  :city, :house_number, :token, :user_id, :item_id, presence: true
-  
-   with_options presence: true do
-    validates :phone_number , format: { with: /\A[0-9]+\z/ } 
+ 
+  validates :phone_number , format: { with: /\A[0-9]+\z/ } 
+ 
+  with_options presence: true do
     validates :phone_number , length: { minimum: 10 , maximum: 11}
    
     validates :postal_code , format: { with: /\A\d{3}[-]\d{4}\z/  }
