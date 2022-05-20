@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        last_name: 苗字
+        first_name: 名前
+        last_name_k: 苗字(カナ)
+        first_name_k: 名前(カナ)
+        birth_date: 誕生日
+      item:
+         item_name: 商品名
+         price: 価格
+         item_explaining: 商品説明
+         image: 画像
+         item_state_id: 商品の状態
+         pay_for_shipping_id: 配送料の負担
+         shipping_region_id: 発送元の地域
+         shipping_day_id: 発送までの日数
+         category_id: カテゴリー
+
+  activemodel:   #orderモデルはactivemodelを継承している
+   attributes:   
+      order:
+        city: 市町村
+        house_number: 番地
+        token: 正しいクレジットカード情報
+        user_id: 出品ユーザー 
+        item_id: 出品商品
+        phone_number: 電話番号
+        postal_code: 郵便番号
+        shipping_region_id: 都道府県
