@@ -10,31 +10,31 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 adapter: mysql2
-  database: furima_37895_production
+  database: furima-37895_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock
 
 
 
-default: &default
-  adapter: mysql2
-  encoding: utf8
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+#default: &default
+ # adapter: mysql2
+  #encoding: utf8
+  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  #username: root
+  #password:
+  #socket: /tmp/mysql.sock
 
-development:
-  <<: *default
-  database: furima_37895_development
+#development:
+  #<<: *default
+  #database: furima_37895_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: furima_37895_test
+#test:
+  #<<: *default
+  #database: furima_37895_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -55,8 +55,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: furima_37895_production
-  username: furima_37895
-  password: <%= ENV['FURIMA_37895_DATABASE_PASSWORD'] %>
+#production:
+ # <<: *default
+  #database: furima_37895_production
+  #username: furima_37895
+  #password: <%= ENV['FURIMA_37895_DATABASE_PASSWORD'] %>
