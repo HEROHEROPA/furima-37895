@@ -20,6 +20,8 @@ window.addEventListener('load', function(){
    
    console.log(card)
     Payjp.createToken(card, (status, response) => {
+      
+      debugger
       if (status == 200) {
         const token = response.id;
         
