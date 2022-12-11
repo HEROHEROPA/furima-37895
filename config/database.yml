@@ -10,11 +10,6 @@
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
 
-  adapter: mysql2
-  database: furima-37895_production
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
 
 
 
@@ -56,8 +51,12 @@
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-#production:
- # <<: *default
-  #database: furima_37895_production
+production:
+  <<: *default
+  adapter: mysql2
+  database: furima-37895_production
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
   #username: furima_37895
   #password: <%= ENV['FURIMA_37895_DATABASE_PASSWORD'] %>
